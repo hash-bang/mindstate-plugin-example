@@ -3,14 +3,14 @@ var async = require('async-chainable');
 var fs = require('fs');
 
 module.exports = {
-	name: 'acme',
+	name: 'example',
 	description: 'A description of what this plugin does',
 	backup: function(finish, workspace) {
 		async()
 			.then(function(next) {
 				// Sanity checks {{{
-				if (!mindstate.config.acme.enabled) {
-					if (mindstate.program.verbose) console.log(colors.grey('Acme backup is disabled'));
+				if (!mindstate.config.example.enabled) {
+					if (mindstate.program.verbose) console.log(colors.grey('Example backup is disabled'));
 					return next('SKIP');
 				}
 				next();
@@ -26,8 +26,8 @@ module.exports = {
 		async()
 			.then(function(next) {
 				// Sanity checks {{{
-				if (!mindstate.config.acme.enabled) {
-					if (mindstate.program.verbose) console.log(colors.grey('Acme restore is disabled'));
+				if (!mindstate.config.example.enabled) {
+					if (mindstate.program.verbose) console.log(colors.grey('Example restore is disabled'));
 					return next('SKIP');
 				}
 				next();
@@ -43,7 +43,7 @@ module.exports = {
 	},
 	config: function(finish) {
 		return finish(null, {
-			acme: {
+			example: {
 				enabled: true,
 			},
 		});
