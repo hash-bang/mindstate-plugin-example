@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var async = require('async-chainable');
+var colors = require('colors');
 var fs = require('fs');
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
 			.then(function(next) {
 				// Sanity checks {{{
 				if (!mindstate.config.example.enabled) {
-					if (mindstate.program.verbose) console.log(colors.grey('Example backup is disabled'));
+					if (mindstate.verbose) console.log(colors.blue('[Example]'), 'Example backup is disabled');
 					return next('SKIP');
 				}
 				next();
@@ -27,7 +28,7 @@ module.exports = {
 			.then(function(next) {
 				// Sanity checks {{{
 				if (!mindstate.config.example.enabled) {
-					if (mindstate.program.verbose) console.log(colors.grey('Example restore is disabled'));
+					if (mindstate.verbose) console.log(colors.blue('[Example]'), 'Example restore is disabled');
 					return next('SKIP');
 				}
 				next();
